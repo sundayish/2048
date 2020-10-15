@@ -114,7 +114,7 @@ class Game(tk.Frame):
         new_matrix = [[0] * 4 for _ in range(4)]
         for i in range(4):
             for j in range(4):
-                new_matrix[i][j] = self.matrix[i][j]
+                new_matrix[i][j] = self.matrix[j][i]
         self.matrix = new_matrix
 
     # Add new 2 or 4 tile to empty cell
@@ -152,6 +152,7 @@ class Game(tk.Frame):
         self.stack()
         self.add_new_tile()
         self.update_GUI()
+        self.game_over()
 
     def right(self, event):
         self.reverse()
@@ -161,6 +162,7 @@ class Game(tk.Frame):
         self.reverse()
         self.add_new_tile()
         self.update_GUI()
+        self.game_over()
 
     def up(self, event):
         self.transpose()
@@ -170,6 +172,7 @@ class Game(tk.Frame):
         self.transpose()
         self.add_new_tile()
         self.update_GUI()
+        self.game_over()
 
     def down(self, event):
         self.transpose()
@@ -181,6 +184,7 @@ class Game(tk.Frame):
         self.transpose()
         self.add_new_tile()
         self.update_GUI()
+        self.game_over()
 
     # Check for possible moves
     def horizontal_move_possible(self):
@@ -219,3 +223,9 @@ class Game(tk.Frame):
                 fg=c.GAME_OVER_FONT_COLOR, 
                 font=c.GAME_OVER_FONT
             ).pack()
+
+def main():
+    Game()
+
+if __name__ == "__main__":
+    main()
